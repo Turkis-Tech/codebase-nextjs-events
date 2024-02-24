@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AppHeader />
-        <main className="flex items-center justify-between p-24">
+        <main className="container mx-auto">
           {children}
         </main>
         <AppFooter />
