@@ -34,7 +34,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Provide the theme and toggleTheme function to the children components
   return (
-    <AppContext.Provider value={{ state, toggleTheme }}>
+    <AppContext.Provider value={{ state, toggleTheme } as any}>
       {children}
     </AppContext.Provider>
   );
