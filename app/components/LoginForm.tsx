@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,6 +17,8 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = () => {
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
   const {
     register,
     handleSubmit,
@@ -35,7 +38,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white shadow-md rounded-md p-6 md:w-1/2 sm:w-full"
+      className="bg-white dark:bg-slate-600 shadow-md rounded-md p-10"
     >
       <label htmlFor="username" className="block mb-2">
         Username
@@ -44,9 +47,10 @@ const LoginForm = () => {
         type="text"
         id="username"
         className="border border-gray-300 rounded-md px-3 py-2 mb-2 w-full"
+        placeholder="Your Username"
         {...register("username")}
       />
-      <p className="text-red-500 text-xs mt-1">{errors.username?.message}</p>
+      <p className="text-red-500 text-sm mt-1">{errors.username?.message}</p>
       <label htmlFor="password" className="block mb-2">
         Password
       </label>
@@ -54,15 +58,21 @@ const LoginForm = () => {
         type="password"
         id="password"
         className="border border-gray-300 rounded-md px-3 py-2 mb-2 w-full"
+        placeholder="Your Password"
         {...register("password")}
       />
-      <p className="text-red-500 text-xs mt-1">{errors.password?.message}</p>
+      <p className="text-red-500 text-sm mt-1">{errors.password?.message}</p>
       <button
-        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
+        className="mt-4 bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded w-full"
         type="submit"
       >
         Login
       </button>
+      {error && (
+        <p className="text-red-500 text-sm mt-2">
+          {error === "CredentialsSignin" ? "Invalid credentials" : "Error"}
+        </p>
+      )}
     </form>
   );
 };

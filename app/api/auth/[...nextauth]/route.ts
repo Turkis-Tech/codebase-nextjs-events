@@ -1,10 +1,11 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { TUser } from "@app/types/App";
+import { TUser } from "@/app/types/App";
+import { isCredentialMatched } from "@/app/utils";
 
 const handler = NextAuth({
   pages: {
-    signIn: "/login",
+    signIn: "/login"
   },
   providers: [
     CredentialsProvider({
@@ -25,23 +26,26 @@ const handler = NextAuth({
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
-
+        
+        // fake user is here and it's going to match with credentials
         const user: TUser = {
           id: 1,
-          name: "Alptug",
-          email: "alptug.turkis@outlook.com",
+          name: "Admin",
+          username: "admin@local.com",
+          password: "q1w2e3R4."
         };
 
         // If no error and we have user data, return it
-        if (user) {
-          return user;
-        }
-        // Return null if user data could not be retrieved
-        return null;
-      },
-    }),
-  ],
-  secret: "q1w2e3r4t5y6u7i8o9p0",
-});
+                if (isCredentialMatched(credentials as any, user)) {
+                  return user;
+                }
+
+                // Return null if user data could not be retrieved
+                return null;
+              },
+            }),
+          ],
+          secret: "q1w2e3r4t5y6u7i8o9p0",
+        });
 
 export { handler as GET, handler as POST };

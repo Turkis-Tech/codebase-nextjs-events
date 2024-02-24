@@ -9,8 +9,9 @@ type TAction = {
 
 type TUser = {
   id: number;
-  name: string;
-  email: string;
+  name?: string;
+  username: string;
+  password: string;
 };
 
-export type { TAppState, TAction };
+export type { TAppState, TAction, TUser };
