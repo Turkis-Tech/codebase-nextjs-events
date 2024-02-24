@@ -1,7 +1,9 @@
+import AppContainer from "@/app/components/AppContainer";
+
 export default function Home() {
   return (
-    <section id="home">
-        <h2>home</h2>
-    </section>
+    <AppContainer id="home">
+      <h1>Home</h1>
+    </AppContainer>
   );
 }
