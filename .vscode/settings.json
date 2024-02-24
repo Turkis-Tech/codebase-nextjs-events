@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": true
+            },
+            "previewLimit": 50,
+            "server": "ep-bold-band-a2biw6pv-pooler.eu-central-1.aws.neon.tech",
+            "driver": "PostgreSQL",
+            "name": "event-db",
+            "connectString": "postgres://default:E3fl7UZGopWF@ep-bold-band-a2biw6pv-pooler.eu-central-1.aws.neon.tech/verceldb?pgbouncer=true&connect_timeout=15&sslmode=require",
+            "database": "verceldb",
+            "username": "default"
+        }
+    ]
+}
