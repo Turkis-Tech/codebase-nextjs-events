@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import authOptions from "@/app/config/authConfig";
 import AppContainer from "@/app/components/AppContainer";
 import EventList from "../components/EventList";
 
