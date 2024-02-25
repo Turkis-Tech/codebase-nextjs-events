@@ -1,6 +1,7 @@
 "use client"; // Error components must be Client Components
 
 import { useEffect } from "react";
+import AppContainer from "./components/AppContainer";
 
 export default function Error({
   error,
@@ -14,9 +15,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
+    <AppContainer id="error">
       <h2>Something went wrong!</h2>
       <button onClick={() => reset()}>Try again</button>
-    </div>
+    </AppContainer>
   );
 }

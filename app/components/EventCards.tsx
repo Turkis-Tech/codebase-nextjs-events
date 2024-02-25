@@ -70,7 +70,7 @@ const EventCards = () => {
           </svg>
         </button>
       </div>
-      <div className="flex justify-center align-middle gap-4">
+      <div className="flex justify-center align-middle gap-4 flex-wrap">
         {loading ? (
           <AppLoading />
         ) : (

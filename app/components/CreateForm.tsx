@@ -11,7 +11,10 @@ const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
   description: yup.string().required("Description is required"),
   location: yup.string().required("Location is required"),
-  date: yup.date().required("Date is required"),
+  date: yup
+    .date()
+    .min(new Date(), "Date must be after today")
+    .required("Date is required"),
   time: yup.string().required("Time is required"),
 });
 
