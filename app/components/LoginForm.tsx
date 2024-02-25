@@ -38,7 +38,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white dark:bg-slate-600 shadow-md rounded-md p-10"
+      className="bg-white dark:bg-slate-600 shadow-md rounded-md p-10 lg:w-1/2 md:w-full"
     >
       <label htmlFor="username" className="block mb-2">
         Username

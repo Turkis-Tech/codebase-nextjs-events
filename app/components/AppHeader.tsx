@@ -20,14 +20,6 @@ const AppHeader: React.FC = () => {
       <Suspense fallback={<p>loading</p>}>
         <nav className="flex space-x-4 items-center">
           <label className="text-gray-500">{user?.name}</label>
-          {user && (
-            <Link
-              href="/"
-              className="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded"
-            >
-              Create
-            </Link>
-          )}
           {user ? (
             <Link
               href="#"
