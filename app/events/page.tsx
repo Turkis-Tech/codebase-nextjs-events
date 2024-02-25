@@ -10,7 +10,7 @@ export default async function Events() {
       const headersList = headers();
       const domain = headersList.get("host");
 
-      const response = await fetch(`https://${domain}/api/events`, {
+      const response = await fetch(`${process.env.NODE_ENV === "development" ? "http://" : "https://"}${domain}/api/events`, {
         cache: "no-store",
       });
 

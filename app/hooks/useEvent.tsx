@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { TEvent } from "@/app/types/Event";
-
 const useEvents = () => {
   const [event, setEvent] = useState<TEvent | null>(null);
   const [loading, setLoading] = useState(false);
@@ -11,7 +10,7 @@ const useEvents = () => {
 
     try {
       const response = await fetch(
-        `https://${window.location.hostname}:${window.location.port}/api/events`,
+        `${process.env.NODE_ENV === "development" ? "http://" : "https://"}${window.location.hostname}:${window.location.port}/api/events`,
         {
           method: "POST",
           headers: {
