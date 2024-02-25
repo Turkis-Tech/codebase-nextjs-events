@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
@@ -17,10 +17,16 @@ const AppHeader: React.FC = () => {
         </Link>
         <h1 className="text-2xl font-bold text-gray-200">Event Management</h1>
       </div>
-      <Suspense fallback={<p>loading</p>}>
-        <nav className="flex space-x-4 items-center">
-          <label className="text-gray-500">{user?.name}</label>
-          {user ? (
+      <nav className="flex space-x-4 items-center">
+        <label className="text-gray-500">{user?.name}</label>
+        {user ? (
+          <>
+            <Link
+              href="/events"
+              className="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded"
+            >
+              Events Management
+            </Link>
             <Link
               href="#"
               onClick={() => signOut()}
@@ -28,16 +34,16 @@ const AppHeader: React.FC = () => {
             >
               Logout
             </Link>
-          ) : (
-            <Link
-              href="/login"
-              className="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded"
-            >
-              Login
-            </Link>
-          )}
-        </nav>
-      </Suspense>
+          </>
+        ) : (
+          <Link
+            href="/login"
+            className="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded"
+          >
+            Login
+          </Link>
+        )}
+      </nav>
     </header>
   );
 };

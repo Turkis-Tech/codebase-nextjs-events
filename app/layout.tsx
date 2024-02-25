@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <App>
           <AppHeader />
-          <main className="p-4">{children}</main>
+          <main>{children}</main>
           <AppFooter />
         </App>
       </body>

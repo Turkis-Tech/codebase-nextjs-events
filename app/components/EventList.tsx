@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { TEvent } from "@/app/types/Event";
-import useEvents from "@/app/hooks/useEvent";
+import { useEvents } from "@/app/hooks/useEvent";
 
 const EventList = ({ events }: { events: TEvent[] }) => {
   const router = useRouter();

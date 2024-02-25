@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TEvent } from "@/app/types/Event";
-import useEvents from "@/app/hooks/useEvent";
+import { useEvents } from "@/app/hooks/useEvent";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
