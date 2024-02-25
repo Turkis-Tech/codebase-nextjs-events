@@ -46,7 +46,7 @@ const LoginForm = () => {
       <input
         type="text"
         id="username"
-        className="border border-gray-300 rounded-md px-3 py-2 mb-2 w-full"
+        className="form-input w-full px-4 py-2 outline-none focus:border-none border border-gray-300 rounded-md focus:ring-1 focus:text-teal-700 focus:ring-teal-700 transition-all"
         placeholder="Your Username"
         {...register("username")}
       />
@@ -57,7 +57,7 @@ const LoginForm = () => {
       <input
         type="password"
         id="password"
-        className="border border-gray-300 rounded-md px-3 py-2 mb-2 w-full"
+        className="form-input w-full px-4 py-2 outline-none focus:border-none border border-gray-300 rounded-md focus:ring-1 focus:text-teal-700 focus:ring-teal-700 transition-all"
         placeholder="Your Password"
         {...register("password")}
       />

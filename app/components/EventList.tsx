@@ -1,18 +1,27 @@
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import { TEvent } from "@/app/types/Event";
-import useEvents from "@/app/hooks/useEvent";
+import AppLoading from "@/app/components/AppLoading";
+import { useEvents } from "@/app/hooks/useEvent";
 
-const EventList = ({ events }: { events: TEvent[] }) => {
-  const router = useRouter();
-  const { deleteEvent, loading } = useEvents();
+const EventList = () => {
+  const { deleteEvent, loading, getEvents, events } = useEvents();
   const onDeleteClicked = async (id: number) => {
     await deleteEvent(id);
-    router.refresh();
+    await getEvents();
   };
 
-  return (
+  useEffect(() => {
+    const fetchData = async () => {
+      await getEvents();
+    };
+
+    fetchData();
+  }, []);
+
+  return loading ? (
+    <AppLoading />
+  ) : (
     <table className="table-auto w-full">
       <thead>
         <tr>

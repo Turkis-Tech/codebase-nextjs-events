@@ -5,13 +5,16 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TEvent } from "@/app/types/Event";
-import useEvents from "@/app/hooks/useEvent";
+import { useEvents } from "@/app/hooks/useEvent";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
   description: yup.string().required("Description is required"),
   location: yup.string().required("Location is required"),
-  date: yup.date().required("Date is required"),
+  date: yup
+    .date()
+    .min(new Date(), "Date must be after today")
+    .required("Date is required"),
   time: yup.string().required("Time is required"),
 });
 

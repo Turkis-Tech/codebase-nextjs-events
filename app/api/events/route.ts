@@ -2,10 +2,21 @@ import { TEvent } from "@/app/types/Event";
 import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(): Promise<NextResponse<TEvent[]>> {
-  const { rows } = await sql`SELECT * from events`;
+export async function GET(
+  request: NextRequest
+): Promise<NextResponse<TEvent | TEvent[]>> {
+  const searchParams = request.nextUrl.searchParams;
+  const id = searchParams.get("id");
 
-  return NextResponse.json(rows as TEvent[]);
+  if (id) {
+    const { rows } = await sql`SELECT * from events WHERE id = ${id}`;
+
+    return NextResponse.json(rows[0] as TEvent);
+  } else {
+    const { rows } = await sql`SELECT * from events`;
+
+    return NextResponse.json(rows as TEvent[]);
+  }
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse<any>> {
