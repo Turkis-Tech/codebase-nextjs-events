@@ -2,7 +2,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/config";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AppContainer from "@/app/components/AppContainer";
 import { TEvent } from "@/app/types/Event";
 import EventList from "../components/EventList";
