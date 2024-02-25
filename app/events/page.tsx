@@ -24,14 +24,15 @@ export default async function Events() {
 
     return (
       <AppContainer id="events">
-        <h2 className="text-lg">Event List</h2>
+        <h2 className="text-2xl text-slate-500 text-center mb-4">Event List</h2>
+        <hr className="border-t border-gray-400 my-4 h-1 w-full opacity-50" />
+        <EventList events={events} />
         <Link
           href="/events/create"
-          className="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded"
+          className="bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded w-full text-center mt-4"
         >
-          Create
+          Create Event
         </Link>
-        <EventList events={events} />
       </AppContainer>
     );
   } catch (error) {

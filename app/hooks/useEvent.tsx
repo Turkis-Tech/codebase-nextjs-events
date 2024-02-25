@@ -30,7 +30,25 @@ const useEvents = () => {
     }
   };
 
-  return { event, loading, error, createEvent };
+  const deleteEvent = async (id: number) => {
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        `${process.env.NODE_ENV === "development" ? "http://" : "https://"}${window.location.hostname}:${window.location.port}/api/events?id=${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      await response.json();
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { event, loading, error, createEvent, deleteEvent };
 };
 
 export default useEvents;

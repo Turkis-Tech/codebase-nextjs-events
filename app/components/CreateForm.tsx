@@ -24,11 +24,11 @@ const CreateFrom = () => {
   } = useForm<TEvent>({
     resolver: yupResolver(schema),
   });
-  const { loading, error, createEvent } = useEvents();
+  const { loading, createEvent } = useEvents();
 
   const onSubmit: SubmitHandler<TEvent> = async (data: TEvent) => {
     await createEvent(data);
-    router.push("/events");
+    router.replace("/events");
   };
 
   return (

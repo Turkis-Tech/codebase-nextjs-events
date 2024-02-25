@@ -18,3 +18,16 @@ VALUES (${name}, ${description}, ${location}, ${date}, ${time});`;
 
   return NextResponse.json({ message: "ok" });
 }
+
+export async function DELETE(request: NextRequest): Promise<NextResponse<any>> {
+  const searchParams = request.nextUrl.searchParams;
+  const id = searchParams.get("id");
+
+  const { rowCount } = await sql`DELETE FROM events WHERE id = ${id}`;
+
+  if (rowCount === 0) {
+    return NextResponse.json({ message: "Event not found" }, { status: 404 });
+  }
+
+  return NextResponse.json({ message: "Event deleted" });
+}
