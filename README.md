@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+## User Credentials
+- username: admin
+- password: q1w2e3R4.
+
 First, run the development server:
 
 ```bash
@@ -22,3 +26,5 @@ bun dev
 - [ESLint](https://eslint.org/)
 - [react-hook-form](https://react-hook-form.com/)
 - [tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
+
+##Having Fun with the project 🙂🙂🙂
