@@ -1,18 +1,30 @@
 import Link from "next/link";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AppContainer from "@/app/components/AppContainer";
 import { TEvent } from "@/app/types/Event";
 import EventList from "../components/EventList";
 
 export default async function Events() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/login");
+  }
+
   try {
     const fetchEvents = async (): Promise<TEvent[]> => {
       const headersList = headers();
       const domain = headersList.get("host");
 
-      const response = await fetch(`${process.env.NODE_ENV === "development" ? "http://" : "https://"}${domain}/api/events`, {
-        cache: "no-store",
-      });
+      const response = await fetch(
+        `${process.env.NODE_ENV === "development" ? "http://" : "https://"}${domain}/api/events`,
+        {
+          cache: "no-store",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to get events");
