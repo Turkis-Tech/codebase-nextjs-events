@@ -10,7 +10,7 @@ const AppContainer = ({ children, id }: TAppContainer) => {
   return (
     <section
       id={id}
-      className="flex flex-col justify-center items-center h-screen w-100 p-4"
+      className="flex flex-col justify-center items-center w-100 p-4 min-h-screen"
     >
       {children}
     </section>
