@@ -10,7 +10,7 @@ const AppHeader: React.FC = () => {
   const { user } = data || {};
 
   return (
-    <header className="flex items-center justify-between p-4 bg-gray-600 bg-opacity-50">
+    <header className="flex items-center justify-between p-4 bg-gray-600 bg-opacity-50 flex-wrap">
       <div className="flex items-center space-x-4">
         <Link href="/">
           <Image src={logo} alt="logo" width={40} height={40} />
