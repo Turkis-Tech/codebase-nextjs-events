@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## User Credentials
 - username: admin
-- password: q1w2e3R4. 
+- password: q1w2e3R4.
 
 First, run the development server:
 
